@@ -1,0 +1,40 @@
+{
+	"schemaVersion": 1,
+	"id": "mycultism",
+	"version": "${version}",
+	"name": "Mycultism",
+	"description": "Magic mod by Myc0tic",
+	"authors": [
+		"Me!"
+	],
+	"contact": {
+		"homepage": "https://fabricmc.net/",
+		"sources": "https://github.com/FabricMC/fabric-example-mod"
+	},
+	"license": "CC0-1.0",
+	"icon": "assets/mycultism/icon.png",
+	"environment": "*",
+	"entrypoints": {
+		"main": [
+			"com.myc0tic.mycultism.Mycultism"
+		],
+		"fabric-datagen": [
+			"com.myc0tic.mycultism.MycultismDataGenerator"
+		],
+		"client" : [
+			"com.myc0tic.mycultism.MycultismModClient"
+		]
+	},
+	"mixins": [
+		"mycultism.mixins.json"
+	],
+	"depends": {
+		"fabricloader": ">=0.16.12",
+		"minecraft": "~1.21.5",
+		"java": ">=21",
+		"fabric-api": "*"
+	},
+	"suggests": {
+		"another-mod": "*"
+	}
+}
