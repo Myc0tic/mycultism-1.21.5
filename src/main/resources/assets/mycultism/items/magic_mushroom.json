@@ -1,0 +1,6 @@
+{
+  "model": {
+    "type" : "minecraft:model",
+    "model": "mycultism:item/magic_mushroom"
+  }
+}

@@ -1,4 +1,5 @@
 plugins {
+	// Using 1.10-SNAPSHOT - ensure this is the recommended version for MC 1.21.5 / Fabric API 0.119.9
 	id 'fabric-loom' version '1.10-SNAPSHOT'
 	id 'maven-publish'
 }
@@ -18,33 +19,28 @@ repositories {
 	// for more information about repositories.
 }
 
-fabricApi {
-	configureDataGeneration {
-		client = true
-	}
-}
+// fabricApi block removed - Relying on fabric.mod.json datagen entrypoint
 
 dependencies {
 	// To change the versions see the gradle.properties file
-	minecraft "com.mojang:minecraft:${project.minecraft_version}"
-	mappings "net.fabricmc:yarn:${project.yarn_mappings}:v2"
-	modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
+	minecraft "com.mojang:minecraft:${project.minecraft_version}" // Should be 1.21.5
+	mappings "net.fabricmc:yarn:${project.yarn_mappings}:v2" // Should be 1.21.5+build.1
+	modImplementation "net.fabricmc:fabric-loader:${project.loader_version}" // Should be 0.16.12
 
 	// Fabric API. This is technically optional, but you probably want it anyway.
-	modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
-	
+	modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}" // Should be 0.119.9+1.21.5
 }
 
 processResources {
 	inputs.property "version", project.version
 
 	filesMatching("fabric.mod.json") {
-		expand "version": inputs.properties.version
+		expand "version": project.version // Use project.version consistently
 	}
 }
 
 tasks.withType(JavaCompile).configureEach {
-	it.options.release = 21
+	it.options.release = 21 // Matches java version in fabric.mod.json
 }
 
 java {
@@ -61,7 +57,7 @@ jar {
 	inputs.property "archivesName", project.base.archivesName
 
 	from("LICENSE") {
-		rename { "${it}_${inputs.properties.archivesName}"}
+		rename { "${it}_${project.archives_base_name}"} // Use project.archives_base_name consistently
 	}
 }
 

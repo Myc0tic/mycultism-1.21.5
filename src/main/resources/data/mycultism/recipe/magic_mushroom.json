@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    "minecraft:red_mushroom",
+    "minecraft:glow_ink_sac"
+  ],
+  "result": {
+    "id": "mycultism:magic_mushroom",
+    "count": 1
+  }
+}

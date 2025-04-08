@@ -1,5 +1,7 @@
 package com.myc0tic.mycultism;
 
+
+import com.myc0tic.mycultism.item.ModItems;
 import net.fabricmc.api.ModInitializer;
 
 import org.slf4j.Logger;
@@ -13,6 +15,6 @@ public class Mycultism implements ModInitializer {
 	@Override
 	public void onInitialize() {
 
-
+		ModItems.registerModItems();
 	}
 }
